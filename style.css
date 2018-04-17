@@ -1,0 +1,39 @@
+
+.current-word-container {
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.letter {
+    padding: 10px;
+    margin: 10px;
+    height: 15px;
+    border-bottom: 1px solid black;
+}
+
+.alphabet-container {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 75px;
+    width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.incorrect-guesss {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 200px;
+}
+
+.alphabet-letter {
+    padding: 5px;
+    font-size: 20px;
+}
