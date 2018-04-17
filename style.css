@@ -27,10 +27,11 @@
     align-items: center;
 }
 
-.incorrect-guesss {
+.incorrect-guesses {
     border-radius: 5px;
     border: 1px solid black;
     height: 200px;
+    color: red;
 }
 
 .alphabet-letter {

@@ -24,7 +24,7 @@ const collectionOfWords = [{
 }]
 
 const guesses = {
-    count: 10,
+    remaining: 10,
     incorrectLetters: []
 }
 
@@ -49,7 +49,7 @@ const attemptToGuessLetter = (guessedLetter, word) => {
 
 // DOM Manipulation
 
-const showAllLetters = () => {
+const showAlphabetLetters = () => {
     const alphabetArray = 'abcdefghijklmnopqrstuvwxyz'.split('')
     alphabetArray.forEach((letter, index) => {
         $('#alphabet-id').append(`<div id="alpha-letter-${index}" class="alphabet-letter">${letter}<div>`)
@@ -62,20 +62,43 @@ const createLetterDivs = (word) => {
     })
 }
 
-const showDivsForLetters = (word) => {
-    if (letter.showing) {
-        $('#current-word-id').append(`<div class="word-letter">${letter.letter}<div>`)
-    }
-    else {
-        $('#current-word-id').append(`<div class="word-letter"><div>`)
-    }
+const addLetterToIncorrect = (letter) => {
+    $('.incorrect-guesses').append(`<div>${letter}</div>`)
 }
+
+
+const makeGuess = () => {
+    $('.alphabet-letter').on('click', function () {
+        const guessedLetter = $(this).text()
+        guesses.remaining -= 1
+        console.log(guesses.remaining);
+        $(this).remove()
+        guesses.incorrectLetters.push(guessedLetter)        
+        addLetterToIncorrect(guessedLetter)
+    })
+}
+
+
+
+
 
 const randomlySelectedWord = selectWordRandomly(collectionOfWords)
 const currentWordAfterGuess = attemptToGuessLetter("t", randomlySelectedWord)
 
-
 $(document).ready(function () {
+    showAlphabetLetters()
+
     createLetterDivs(randomlySelectedWord)
-    showAllLetters()
+    
+    makeGuess()
 });
+
+
+// const showDivsForLetters = (word) => {
+//     if (letter.showing) {
+//         $('#current-word-id').append(`<div class="word-letter">${letter.letter}<div>`)
+//     }
+//     else {
+//         $('#current-word-id').append(`<div class="word-letter"><div>`)
+//     }
+// }
