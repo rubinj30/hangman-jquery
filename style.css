@@ -1,16 +1,28 @@
+h1 {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .current-word-container {
-    height: 50px;
+    height: 100px;
     border: 1px solid black;
     border-radius: 5px;
     display: flex;
-    font-size: 20px;
+    font-size: 40px;
+    padding-bottom: 10px;
     justify-content: center;
-    padding-top: 100px;
+    align-items: center;
+    
 }
 
 .letter {
-    padding: 10px;
+    padding: 20px;
     margin: 10px;
     height: 15px;
     border-bottom: 1px solid black;
@@ -30,11 +42,36 @@
 .incorrect-guesses {
     border-radius: 5px;
     border: 1px solid black;
-    height: 200px;
+    height: 75px;
+    display: flex;
     color: red;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.incorrect-guess-label {
+    font-size: 20px;
+}
+
+.incorrect-letter {
+    padding: 10px;
 }
 
 .alphabet-letter {
     padding: 5px;
-    font-size: 20px;
+    font-size: 30px;
+}
+
+.remaining-guesses-container {
+    font-size: 40px;
+}
+
+#remaining-guesses {
+    text-align: center;
+}
+
+.hint-container {
+    height: 100px;
+    font-size: 30px;
 }

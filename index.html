@@ -10,17 +10,27 @@
 </head>
 
 <body>
-    <h1>Hangman</h1>
+    <header>
+        <h1>Hangman</h1>
+    </header>
     <main>
-        <div class="current-word-container" id="current-word-id" >
+        <div class="remaining-guesses-container">
+            <div class="incorrect-guess-label">Incorrect Guesses Remaining:</div>
+            <div id="remaining-guesses">6</div>
+        </div>
+        <div class="current-word-container" id="current-word-id">
         </div>
         <div class="alphabet-container" id="alphabet-id">
         </div>
         <div class="incorrect-guesses">
+        </div>
+        <div class="hint-container">
+            <div id="hint">Hint?</div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
+
 </html>

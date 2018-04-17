@@ -6,7 +6,7 @@ const word =
         selectWordRandomly: function () {
             const randomIndex = Math.floor(Math.random() * this.collectionOfWords.length)
             this.collectionOfWords[randomIndex].word.split('').forEach((letter) => {
-                this.currentWord.push({ letter: letter, showing: false })
+                this.currentWord.push(letter)
             })
             this.currentHint = this.collectionOfWords[randomIndex].hint
         },
@@ -34,40 +34,33 @@ const word =
         {
             word: "testcsharp",
             hint: "hint6"
-        }],
-
-
+        }]
     }
 
 const guesses = {
-    remaining: 10,
+    remaining: 6,
     incorrectLetters: [],
+    decreaseRemaining: function () {
+        $('#remaining-guesses').text(`${this.remaining}`)
+    },
     makeGuess: function () {
         $('.alphabet-letter').on('click', function () {
-
             const guessedLetter = $(this).text()
-            
-            // loop thru array of letter objects
             let letterFound = false
             word.currentWord.forEach((letter, index) => {
-
-                // if the clicked on letter === current letter in loop
-                if(letter.letter === guessedLetter) {
-                    $(`#word-letter-${index}`).text(letter.letter)
+                if(letter === guessedLetter) {
+                    $(`#word-letter-${index}`).text(letter)
                     letterFound = true
-                    console.log("LETTER",letter.letter)
+                    console.log("LETTER",letter)
                 }               
             })
             if (!letterFound) {
                 addLetterToIncorrect(guessedLetter)
                 guesses.remaining -= 1
+                $('#remaining-guesses').text(guesses.remaining)
                 guesses.incorrectLetters.push(guessedLetter)
-            }
-            console.log(guesses.remaining);
-            
+            }           
             $(this).fadeOut(1000)
-
-            
         })
     }
 }
@@ -112,20 +105,3 @@ $(document).ready(function () {
 
     guesses.makeGuess()
 });
-
-
-// const showDivsForLetters = (hangmanWord) => {
-
-//     hangmanWord.forEach((letter) => {
-//         if (hangmanWord.showing) {
-//             $('#current-word-id').append(`<div class="word-letter">${letter.letter}<div>`)
-//         } else {
-//             $('#current-word-id').append(`<div class="word-letter"><div>`)            
-//         }
-//     })
-
-
-//     // else {
-//     //     
-//     // }
-// }
