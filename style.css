@@ -1,3 +1,8 @@
+body {
+    background: #CDEDF6;
+    font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
     text-align: center;
 }
@@ -7,6 +12,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #042A2B;
 }
 
 .top-section {
@@ -38,26 +44,30 @@ main {
     margin: 10px;
     height: 15px;
     width: 20px;
-    border-bottom: 1px solid black;
-    color: green;
+    border-bottom: 5px solid #042A2B;
+    border-radius: 5px;
+    color: #042A2B;
+    text-align: center;
 }
 
 .alphabet-container {
     border-radius: 5px;
-    border: 1px solid black;
     height: 100px;
-    width: 610px;
+    width: 620px;
+    padding: 5px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-color: #5EB1BF;
+    color: #CDEDF6;
 }
 
 .incorrect-guesses {
     border-radius: 5px;
     height: 75px;
     display: flex;
-    color: red;
+    color: #D84727;
     justify-content: center;
     align-items: center;
     font-size: 30px;
@@ -84,6 +94,8 @@ main {
     background-color: green;
     color: white;
     transition: .2s;
+    color: #5EB1BF;
+    background-color: #CDEDF6;
 }
 
 .remaining-guesses-container {
@@ -97,7 +109,7 @@ main {
 .hint-container {
     /* height: 100px; */
     font-size: 30px;
-    color: darkorange;
+    color: #EF7B45;
 }
 
 .hint-given {
@@ -105,28 +117,23 @@ main {
 }
 
 #last-guess {
-    color: red;
+    color: #D84727;
     text-align: center;
 }
 
 .reset-btn {
-        background: green;
-        background-image: -webkit-linear-gradient(top, green, darkgreen);
-        background-image: -moz-linear-gradient(top, green, darkgreen);
-        background-image: -ms-linear-gradient(top, green, darkgreen);
-        background-image: -o-linear-gradient(top, green, darkgreen);
-        background-image: linear-gradient(to bottom, green, darkgreen);
+        background: #EF7B45;
         -webkit-border-radius: 5;
         -moz-border-radius: 5;
         border-radius: 5px;
         font-family: Arial;
-        color: #ffffff;
+        color: #CDEDF6;
         font-size: 20px;
         padding: 10px 20px 10px 20px;
         text-decoration: none;
 }
 
 .reset-btn:hover {
-    background: darkgreen;
+    background: #D84727;
     text-decoration: none;
 }
