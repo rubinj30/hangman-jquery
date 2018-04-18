@@ -1,8 +1,12 @@
-const word =
+const answers =
     {
         currentWord: [],
         currentHint: "",
-
+        giveHint: function () {
+            $('#hint').on('click', function () {
+                $(this).text(answers.currentHint)
+            })
+        },
         selectWordRandomly: function () {
             const randomIndex = Math.floor(Math.random() * this.collectionOfWords.length)
             this.collectionOfWords[randomIndex].word.split('').forEach((letter) => {
@@ -12,54 +16,69 @@ const word =
         },
 
         collectionOfWords: [{
-            word: "testruby",
-            hint: "hint1"
+            word: "ruby",
+            hint: "created by Ykihiro Matsumoto"
         },
         {
-            word: "testpython",
-            hint: "hint2"
+            word: "python",
+            hint: "leverages whitespace as syntax"
         },
         {
-            word: "testelixir",
-            hint: "hint3"
+            word: "elixir",
+            hint: "functional language designed for building scalable applications"
         },
         {
-            word: "testfortran",
-            hint: "hint4"
+            word: "fortran",
+            hint: "originally developed by IBM"
         },
         {
-            word: "testjava",
-            hint: "hint5"
+            word: "typescript",
+            hint: "maintained by Microsoft"
         },
         {
-            word: "testcsharp",
-            hint: "hint6"
+            word: "javascript",
+            hint: "originally written in 10 days"
+        },
+        {
+            word: "swift",
+            hint: "developed by Apple"
+        },
+        {
+            word: "matlab",
+            hint: "proprietary programming language commonly used by engineers and scientists"
         }]
     }
 
 const guesses = {
     remaining: 6,
     incorrectLetters: [],
-    decreaseRemaining: function () {
-        $('#remaining-guesses').text(`${this.remaining}`)
+    checkGuesses: function () {
+        if (guesses.remaining === 1) {
+            $('#remaining-guesses').replaceWith(`<div id="last-guess">${guesses.remaining}</div>`)
+        }
+        else if (guesses.remaining === 0) {
+            $('#last-guess').text(0)
+            setTimeout(() => alert("Reload the page and start a new round"), 1000)
+        }
     },
     makeGuess: function () {
         $('.alphabet-letter').on('click', function () {
             const guessedLetter = $(this).text()
             let letterFound = false
-            word.currentWord.forEach((letter, index) => {
-                if(letter === guessedLetter) {
+            answers.currentWord.forEach((letter, index) => {
+                if (letter === guessedLetter) {
                     $(`#word-letter-${index}`).text(letter)
                     letterFound = true
-                    console.log("LETTER",letter)
-                }               
+                    console.log("LETTER", letter)
+                }
             })
             if (!letterFound) {
                 addLetterToIncorrect(guessedLetter)
                 guesses.remaining -= 1
                 $('#remaining-guesses').text(guesses.remaining)
                 guesses.incorrectLetters.push(guessedLetter)
-            }           
+            }
+            guesses.checkGuesses()
             $(this).fadeOut(1000)
         })
     }
@@ -94,14 +113,15 @@ const addLetterToIncorrect = (letter) => {
     $('.incorrect-guesses').append(`<div class="incorrect-letter">${letter}</div>`)
 }
 
-word.selectWordRandomly()
+answers.selectWordRandomly()
 
 $(document).ready(function () {
 
-
     showAllAlphabetLetters()
 
-    createLetterDivs(word.currentWord)
+    createLetterDivs(answers.currentWord)
 
     guesses.makeGuess()
+    
+    answers.giveHint()
 });

@@ -18,13 +18,15 @@ main {
     padding-bottom: 10px;
     justify-content: center;
     align-items: center;
-    
+    margin: 30px;
 }
 
 .letter {
     padding: 20px;
+    padding-bottom: 32px;
     margin: 10px;
     height: 15px;
+    width: 20px;
     border-bottom: 1px solid black;
 }
 
@@ -37,6 +39,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin: 30px;
 }
 
 .incorrect-guesses {
@@ -48,6 +51,7 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    margin: 30px;
 }
 
 .incorrect-guess-label {
@@ -74,4 +78,11 @@ main {
 .hint-container {
     height: 100px;
     font-size: 30px;
+    color: orange;
+}
+
+#last-guess {
+    color: red;
+    text-align: center;
+    font-size: 45px;
 }
