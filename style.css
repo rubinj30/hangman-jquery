@@ -108,3 +108,25 @@ main {
     color: red;
     text-align: center;
 }
+
+.reset-btn {
+        background: green;
+        background-image: -webkit-linear-gradient(top, green, darkgreen);
+        background-image: -moz-linear-gradient(top, green, darkgreen);
+        background-image: -ms-linear-gradient(top, green, darkgreen);
+        background-image: -o-linear-gradient(top, green, darkgreen);
+        background-image: linear-gradient(to bottom, green, darkgreen);
+        -webkit-border-radius: 5;
+        -moz-border-radius: 5;
+        border-radius: 5px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+}
+
+.reset-btn:hover {
+    background: darkgreen;
+    text-decoration: none;
+}

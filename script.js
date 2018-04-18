@@ -14,6 +14,26 @@ const answers =
             })
             this.currentHint = this.collectionOfWords[randomIndex].hint
         },
+        createLetterDivs: function (word) {
+            $('#current-word-id').empty()
+            $('#remaining-guesses').text(guesses.remaining)
+            word.forEach((letter, index) => {
+                $('#current-word-id').append(`<div id="word-letter-${index}" class="letter"><div>`)
+            })
+        },
+        startNewRound: function () {
+            this.currentWord = []
+            guesses.remaining = 6
+            guesses.incorrectLetters = []
+            showAllAlphabetLetters()
+            this.selectWordRandomly()
+            this.createLetterDivs(this.currentWord)
+        },
+        reset: function() {
+            // $('#reset').on('click', function() {
+            //     answers.startNewRound()
+            // })
+        },
         collectionOfWords: [{
             word: "ruby",
             hint: "created by Ykihiro Matsumoto"
@@ -62,6 +82,7 @@ const guesses = {
     },
     makeGuess: function () {
         $('.alphabet-letter').on('click', function () {
+            console.log("guess2");
             const guessedLetter = $(this).text()
             let letterFound = false
             answers.currentWord.forEach((letter, index) => {
@@ -106,27 +127,30 @@ const attemptToGuessLetter = (guessedLetter, word) => {
 }
 
 const showAllAlphabetLetters = () => {
+    $('#alphabet-id').empty()
+    $('.incorrect-guesses').empty()
     const alphabetArray = 'abcdefghijklmnopqrstuvwxyz'.split('')
     alphabetArray.forEach((letter, index) => {
         $('#alphabet-id').append(`<div id="alpha-letter-${index}" class="alphabet-letter">${letter}<div>`)
     })
 }
 
-const createLetterDivs = (word) => {
-    word.forEach((letter, index) => {
-        $('#current-word-id').append(`<div id="word-letter-${index}" class="letter"><div>`)
-    })
-}
+// const createLetterDivs = (word) => {
+//     word.forEach((letter, index) => {
+//         $('#current-word-id').append(`<div id="word-letter-${index}" class="letter"><div>`)
+//     })
+// }
 
 const addLetterToIncorrect = (letter) => {
     $('.incorrect-guesses').append(`<div class="incorrect-letter">${letter}</div>`)
 }
 
-answers.selectWordRandomly()
+
 
 $(document).ready(function () {
+    answers.selectWordRandomly()
     showAllAlphabetLetters()
-    createLetterDivs(answers.currentWord)
+    answers.createLetterDivs(answers.currentWord)
     guesses.makeGuess() 
     answers.giveHint()
     guesses.checkWin()
