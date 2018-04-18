@@ -4,7 +4,7 @@ const answers =
         currentHint: "",
         giveHint: function () {
             $('#hint').on('click', function () {
-                $(this).text(answers.currentHint)
+                $(this).replaceWith(`<div class="hint-given">${answers.currentHint}</div>`)
             })
         },
         selectWordRandomly: function () {
@@ -45,7 +45,7 @@ const answers =
         },
         {
             word: "matlab",
-            hint: "proprietary programming language commonly used by engineers and scientists"
+            hint: "proprietary language used by engineers and scientists"
         }]
     }
 
@@ -79,7 +79,7 @@ const guesses = {
                 guesses.incorrectLetters.push(guessedLetter)
             }
             guesses.checkGuesses()
-            $(this).fadeOut(1000)
+            $(this).fadeOut(500)
         })
     }
 }

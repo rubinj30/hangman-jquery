@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
@@ -14,9 +14,18 @@
         <h1>Programming Language Hangman</h1>
     </header>
     <main>
-        <div class="remaining-guesses-container">
-            <div class="incorrect-guess-label">Incorrect Guesses Remaining:</div>
-            <div id="remaining-guesses">6</div>
+        <div class="top-section">
+            <div class="remaining-guesses-container">
+                <div class="incorrect-guess-label">Guesses Remaining:</div>
+                <div id="remaining-guesses">6</div>
+            </div>
+            <div class="hint-container">
+                <div id="hint">Hint?</div>
+            </div>
+        </div>
+
+        <div class="hangman">
+
         </div>
         <div class="current-word-container" id="current-word-id">
         </div>
@@ -24,9 +33,7 @@
         </div>
         <div class="incorrect-guesses">
         </div>
-        <div class="hint-container">
-            <div id="hint">Hint?</div>
-        </div>
+
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
