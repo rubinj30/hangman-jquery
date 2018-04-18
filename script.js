@@ -10,11 +10,10 @@ const answers =
         selectWordRandomly: function () {
             const randomIndex = Math.floor(Math.random() * this.collectionOfWords.length)
             this.collectionOfWords[randomIndex].word.split('').forEach((letter) => {
-                this.currentWord.push(letter)
+                this.currentWord.push({letter: letter, showing: false})
             })
             this.currentHint = this.collectionOfWords[randomIndex].hint
         },
-
         collectionOfWords: [{
             word: "ruby",
             hint: "created by Ykihiro Matsumoto"
@@ -66,10 +65,10 @@ const guesses = {
             const guessedLetter = $(this).text()
             let letterFound = false
             answers.currentWord.forEach((letter, index) => {
-                if (letter === guessedLetter) {
-                    $(`#word-letter-${index}`).text(letter)
+                if (letter.letter === guessedLetter) {
+                    $(`#word-letter-${index}`).text(letter.letter)
                     letterFound = true
-                    console.log("LETTER", letter)
+                    letter.showing = true
                 }
             })
             if (!letterFound) {
@@ -80,7 +79,19 @@ const guesses = {
             }
             guesses.checkGuesses()
             $(this).fadeOut(500)
+            guesses.checkWin()
         })
+    },
+    checkWin: function() {
+        let countOfCorrectLetters = 0
+        answers.currentWord.forEach((letter) => {
+            if (letter.showing) {
+                countOfCorrectLetters += 1
+            }           
+        })
+        if(countOfCorrectLetters === answers.currentWord.length) {
+            alert("You won!")
+        }
     }
 }
 
@@ -93,8 +104,6 @@ const attemptToGuessLetter = (guessedLetter, word) => {
     })
     return word
 }
-
-// DOM Manipulation
 
 const showAllAlphabetLetters = () => {
     const alphabetArray = 'abcdefghijklmnopqrstuvwxyz'.split('')
@@ -116,12 +125,9 @@ const addLetterToIncorrect = (letter) => {
 answers.selectWordRandomly()
 
 $(document).ready(function () {
-
     showAllAlphabetLetters()
-
     createLetterDivs(answers.currentWord)
-
-    guesses.makeGuess()
-    
+    guesses.makeGuess() 
     answers.giveHint()
+    guesses.checkWin()
 });
